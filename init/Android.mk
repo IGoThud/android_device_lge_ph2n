@@ -19,8 +19,8 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_C_INCLUDES := system/core/init
-LOCAL_MODULE := libinit_land
+LOCAL_MODULE := libinit_ph2n
 LOCAL_MODULE_TAGS := optional
-LOCAL_SRC_FILES := init_land.cpp
+LOCAL_SRC_FILES := init_ph2n.cpp
 
 include $(BUILD_STATIC_LIBRARY)

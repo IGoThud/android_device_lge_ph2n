@@ -25,7 +25,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),land)
+ifeq ($(TARGET_DEVICE),ph2n)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
@@ -74,6 +74,6 @@ $(IMS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS)
 
-include device/xiaomi/land/tftp.mk
+include device/lge/ph2n/tftp.mk
 
 endif

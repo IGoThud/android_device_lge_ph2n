@@ -1,4 +1,4 @@
-# Common device configuration for Xiaomi Redmi 3S
+# Common device configuration for Lg Stylo 2 Plus
 
 ## Spec Sheet
 
