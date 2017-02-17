@@ -7,11 +7,11 @@
 | CPU                     | Octa-core 1.4 GHz Cortex-A53      |
 | Chipset                 | Qualcomm MSM8937 Snapdragon 430   |
 | GPU                     | Adreno 505                        |
-| Memory                  | 2/3 GB                            |
+| Memory                  | 2 GB                            |
 | Shipped Android Version | 6.0.1                             |
-| Storage                 | 16/32 GB                          |
+| Storage                 | 16 GB                          |
 | MicroSD                 | Up to 256 GB                      |
-| Battery                 | 4100 mAh (non-removable)          |
+| Battery                 | 2900 mAh (non-removable)          |
 | Dimensions              | 139.3 x 69.6 x 8.5 mm             |
 | Display                 | 720 x 1280 pixels, 5.0" IPS LCD   |
 | Rear Camera             | 13 MP, LED flash                  |
