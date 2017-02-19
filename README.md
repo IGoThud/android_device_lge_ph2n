@@ -11,7 +11,7 @@
 | Shipped Android Version | 6.0.1                             |
 | Storage                 | 16 GB                          |
 | MicroSD                 | Up to 256 GB                      |
-| Battery                 | 2900 mAh (non-removable)          |
+| Battery                 | 2900 mAh (removable)          |
 | Dimensions              | 139.3 x 69.6 x 8.5 mm             |
 | Display                 | 720 x 1280 pixels, 5.0" IPS LCD   |
 | Rear Camera             | 13 MP, LED flash                  |
