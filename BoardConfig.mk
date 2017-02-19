@@ -17,53 +17,36 @@
 DEVICE_PATH := device/lge/ph2n
 CM_PATH := vendor/cm/config/board
 
-# Platform
+# Architecture
+TARGET_ARCH := arm
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_VARIANT := cortex-a53
+TARGET_CPU_CORTEX_A53 := true
+
 TARGET_BOARD_PLATFORM := msm8937
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno505
 
-# Inherit common board fragments
-include $(CM_PATH)/common/bluetooth.mk
-include $(CM_PATH)/common/bootloader.mk
-include $(CM_PATH)/common/camera.mk
-include $(CM_PATH)/common/clang.mk
-include $(CM_PATH)/common/cpusets.mk
-include $(CM_PATH)/common/dexopt.mk
-include $(CM_PATH)/common/dlmalloc.mk
-include $(CM_PATH)/common/filesystem.mk
-include $(CM_PATH)/common/gps.mk
-include $(CM_PATH)/common/sepolicy.mk
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := msm8937
+TARGET_NO_BOOTLOADER := true
 
-# Inherit QCOM board fragments
-include $(CM_PATH)/qcom/bluetooth.mk
-include $(CM_PATH)/qcom/bootloader.mk
-include $(CM_PATH)/qcom/camera.mk
-include $(CM_PATH)/qcom/cne.mk
-include $(CM_PATH)/qcom/display.mk
-include $(CM_PATH)/qcom/encryption.mk
-include $(CM_PATH)/qcom/fm.mk
-include $(CM_PATH)/qcom/gps.mk
-include $(CM_PATH)/qcom/per-mgr.mk
-include $(CM_PATH)/qcom/platform.mk
-include $(CM_PATH)/qcom/power.mk
-include $(CM_PATH)/qcom/recovery.mk
-include $(CM_PATH)/qcom/ril.mk
-include $(CM_PATH)/qcom/sepolicy.mk
-include $(CM_PATH)/qcom/time.mk
+# Flags
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
-# Inherit Cyanogen board fragments
-include $(CM_PATH)/cyanogen/hardware.mk
-
-# Inherit the proprietary files
--include vendor/lge/ph2n/BoardConfigVendor.mk
-
-# kernel
+# Kernel
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.hardware=ph2n androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_hsl_uart,0x78B0000
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-BOARD_KERNEL_PAGESIZE :=  2048
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
-TARGET_KERNEL_CONFIG := lineageos_ph2n_defconfig
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
+BOARD_KERNEL_IMAGE_NAME := zImage-dtb
+TARGET_KERNEL_APPEND_DTB := true
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
 TARGET_KERNEL_SOURCE := kernel/lge/msm8937
+TARGET_KERNEL_CONFIG := ph2n_mpcs_us-perf_defconfig
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 
 # ANT
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
@@ -142,3 +125,38 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true
+
+# Inherit common board fragments
+include $(CM_PATH)/common/bluetooth.mk
+include $(CM_PATH)/common/bootloader.mk
+include $(CM_PATH)/common/camera.mk
+include $(CM_PATH)/common/clang.mk
+include $(CM_PATH)/common/cpusets.mk
+include $(CM_PATH)/common/dexopt.mk
+include $(CM_PATH)/common/dlmalloc.mk
+include $(CM_PATH)/common/filesystem.mk
+include $(CM_PATH)/common/gps.mk
+include $(CM_PATH)/common/sepolicy.mk
+
+# Inherit QCOM board fragments
+include $(CM_PATH)/qcom/bluetooth.mk
+include $(CM_PATH)/qcom/bootloader.mk
+include $(CM_PATH)/qcom/camera.mk
+include $(CM_PATH)/qcom/cne.mk
+include $(CM_PATH)/qcom/display.mk
+include $(CM_PATH)/qcom/encryption.mk
+include $(CM_PATH)/qcom/fm.mk
+include $(CM_PATH)/qcom/gps.mk
+include $(CM_PATH)/qcom/per-mgr.mk
+include $(CM_PATH)/qcom/platform.mk
+include $(CM_PATH)/qcom/power.mk
+include $(CM_PATH)/qcom/recovery.mk
+include $(CM_PATH)/qcom/ril.mk
+include $(CM_PATH)/qcom/sepolicy.mk
+include $(CM_PATH)/qcom/time.mk
+
+# Inherit Cyanogen board fragments
+include $(CM_PATH)/cyanogen/hardware.mk
+
+# Inherit the proprietary files
+-include vendor/lge/ph2n/BoardConfigVendor.mk
