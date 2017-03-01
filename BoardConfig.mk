@@ -15,7 +15,7 @@
 #
 
 DEVICE_PATH := device/lge/ph2n
-CM_PATH := vendor/cm/config/board
+#CM_PATH := vendor/cm/config/board
 
 # Architecture
 TARGET_ARCH := arm
@@ -23,30 +23,31 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := cortex-a53
-TARGET_CPU_CORTEX_A53 := true
+#TARGET_CPU_CORTEX_A53 := true
 
 TARGET_BOARD_PLATFORM := msm8937
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno505
+#TARGET_BOARD_PLATFORM_GPU := qcom-adreno505
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := msm8937
-TARGET_NO_BOOTLOADER := true
+#TARGET_BOOTLOADER_BOARD_NAME := msm8937
+#TARGET_NO_BOOTLOADER := true
 
 # Flags
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.hardware=ph2n androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.hardware=ph2n
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
-TARGET_KERNEL_APPEND_DTB := true
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
+#TARGET_KERNEL_APPEND_DTB := true
+#KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
 TARGET_KERNEL_SOURCE := kernel/lge/msm8937
-TARGET_KERNEL_CONFIG := ph2n_mpcs_us-perf_defconfig
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
+TARGET_KERNEL_CONFIG := ph2n_cm_defconfig
+#TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 
 # ANT
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
@@ -65,28 +66,28 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Audio
-AUDIO_FEATURE_ENABLED_ACDB_LICENSE := true
-AUDIO_FEATURE_ENABLED_ANC_HEADSET := true
-AUDIO_FEATURE_ENABLED_AUDIOSPHERE := true
-AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := true
-AUDIO_FEATURE_ENABLED_CUSTOMSTEREO := true
-AUDIO_FEATURE_ENABLED_DEV_ARBI := true
-AUDIO_FEATURE_ENABLED_DS2_DOLBY_DAP := true
-AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
-AUDIO_FEATURE_ENABLED_FLAC_OFFLOAD := true
-AUDIO_FEATURE_ENABLED_FLUENCE := true
-AUDIO_FEATURE_ENABLED_HFP := true
-AUDIO_FEATURE_ENABLED_KPI_OPTIMIZE := true
-AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
-AUDIO_FEATURE_ENABLED_PCM_OFFLOAD := true
-AUDIO_FEATURE_ENABLED_PCM_OFFLOAD_24 := true
-AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
-AUDIO_FEATURE_ENABLED_VOICE_CONCURRENCY := true
+#AUDIO_FEATURE_ENABLED_ACDB_LICENSE := true
+#AUDIO_FEATURE_ENABLED_ANC_HEADSET := true
+#AUDIO_FEATURE_ENABLED_AUDIOSPHERE := true
+#AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := true
+#AUDIO_FEATURE_ENABLED_CUSTOMSTEREO := true
+#AUDIO_FEATURE_ENABLED_DEV_ARBI := true
+#AUDIO_FEATURE_ENABLED_DS2_DOLBY_DAP := true
+#AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
+#AUDIO_FEATURE_ENABLED_FLAC_OFFLOAD := true
+#AUDIO_FEATURE_ENABLED_FLUENCE := true
+#AUDIO_FEATURE_ENABLED_HFP := true
+#AUDIO_FEATURE_ENABLED_KPI_OPTIMIZE := true
+#AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
+#AUDIO_FEATURE_ENABLED_PCM_OFFLOAD := true
+#AUDIO_FEATURE_ENABLED_PCM_OFFLOAD_24 := true
+#AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
+#AUDIO_FEATURE_ENABLED_VOICE_CONCURRENCY := true
 
-AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
-BOARD_SUPPORTS_SOUND_TRIGGER := true
-BOARD_USES_ALSA_AUDIO := true
-USE_CUSTOM_AUDIO_POLICY := 1
+#AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
+#BOARD_SUPPORTS_SOUND_TRIGGER := true
+#BOARD_USES_ALSA_AUDIO := true
+#USE_CUSTOM_AUDIO_POLICY := 1
 
 # Bluetooth
 BLUETOOTH_HCI_USE_MCT := true
@@ -110,6 +111,7 @@ TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
 TARGET_RELEASETOOLS_EXTENSIONS := device/qcom/common
+TARGET_RECOVERY_FSTAB := device/lge/ph2n/rootdir/fstab.ph2n
 
 # Wi-Fi
 BOARD_HAS_QCOM_WLAN := true
@@ -125,38 +127,6 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true
-
-# Inherit common board fragments
-include $(CM_PATH)/common/bluetooth.mk
-include $(CM_PATH)/common/bootloader.mk
-include $(CM_PATH)/common/camera.mk
-include $(CM_PATH)/common/clang.mk
-include $(CM_PATH)/common/cpusets.mk
-include $(CM_PATH)/common/dexopt.mk
-include $(CM_PATH)/common/dlmalloc.mk
-include $(CM_PATH)/common/filesystem.mk
-include $(CM_PATH)/common/gps.mk
-include $(CM_PATH)/common/sepolicy.mk
-
-# Inherit QCOM board fragments
-include $(CM_PATH)/qcom/bluetooth.mk
-include $(CM_PATH)/qcom/bootloader.mk
-include $(CM_PATH)/qcom/camera.mk
-include $(CM_PATH)/qcom/cne.mk
-include $(CM_PATH)/qcom/display.mk
-include $(CM_PATH)/qcom/encryption.mk
-include $(CM_PATH)/qcom/fm.mk
-include $(CM_PATH)/qcom/gps.mk
-include $(CM_PATH)/qcom/per-mgr.mk
-include $(CM_PATH)/qcom/platform.mk
-include $(CM_PATH)/qcom/power.mk
-include $(CM_PATH)/qcom/recovery.mk
-include $(CM_PATH)/qcom/ril.mk
-include $(CM_PATH)/qcom/sepolicy.mk
-include $(CM_PATH)/qcom/time.mk
-
-# Inherit Cyanogen board fragments
-include $(CM_PATH)/cyanogen/hardware.mk
 
 # Inherit the proprietary files
 -include vendor/lge/ph2n/BoardConfigVendor.mk

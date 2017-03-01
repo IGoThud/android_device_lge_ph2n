@@ -15,43 +15,10 @@
 #
 
 DEVICE_PATH := $(LOCAL_PATH)
-CM_PATH := vendor/cm/config/product
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
-
-# Include common product fragments
-include $(CM_PATH)/common/ant.mk
-include $(CM_PATH)/common/audio.mk
-include $(CM_PATH)/common/bluetooth.mk
-include $(CM_PATH)/common/bluetooth-le.mk
-include $(CM_PATH)/common/consumerir.mk
-include $(CM_PATH)/common/fingerprint.mk
-include $(CM_PATH)/common/fm.mk
-include $(CM_PATH)/common/gello.mk
-include $(CM_PATH)/common/gps.mk
-include $(CM_PATH)/common/lights.mk
-include $(CM_PATH)/common/media.mk
-include $(CM_PATH)/common/misc.mk
-include $(CM_PATH)/common/snap.mk
-include $(CM_PATH)/common/wifi.mk
-
-# Include QCOM product fragments
-include $(CM_PATH)/qcom/audio.mk
-include $(CM_PATH)/qcom/camera.mk
-include $(CM_PATH)/qcom/cne.mk
-include $(CM_PATH)/qcom/display.mk
-include $(CM_PATH)/qcom/fm.mk
-include $(CM_PATH)/qcom/gps.mk
-include $(CM_PATH)/qcom/init.mk
-include $(CM_PATH)/qcom/media.mk
-include $(CM_PATH)/qcom/net.mk
-include $(CM_PATH)/qcom/power.mk
-include $(CM_PATH)/qcom/radio.mk
-include $(CM_PATH)/qcom/sensors.mk
-include $(CM_PATH)/qcom/usb.mk
-include $(CM_PATH)/qcom/wifi.mk
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -130,11 +97,11 @@ PRODUCT_PACKAGES += \
 
 # Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapgrowthlimit=192m \
-    dalvik.vm.heapmaxfree=8m \
+    dalvik.vm.heapgrowthlimit=256m \
+    dalvik.vm.heapmaxfree=16m \
     dalvik.vm.heapminfree=4m \
-    dalvik.vm.heapsize=384m \
-    dalvik.vm.heapstartsize=16m \
+    dalvik.vm.heapsize=512m \
+    dalvik.vm.heapstartsize=8m \
     dalvik.vm.heaptargetutilization=0.75
 
 # HWUI
@@ -255,7 +222,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Thermal
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
+    $(LOCAL_PATH)/configs/thermal-engine-8937.conf:system/etc/thermal-engine-8937.conf \
+    $(LOCAL_PATH)/configs/thermal-engine-default.conf:system/etc/thermal-engine-default.conf
 
 # Touchscreen Permissions
 PRODUCT_COPY_FILES += \
@@ -264,6 +232,10 @@ PRODUCT_COPY_FILES += \
 # Init scripts
 PRODUCT_PACKAGES += \
     init.qcom.usb.sh
+
+# Ramdisk
+PRODUCT_PACKAGES += \
+    fstab.ph2n
 
 # Usb Permissions
 PRODUCT_COPY_FILES += \
@@ -274,9 +246,6 @@ PRODUCT_COPY_FILES += \
 # Properties
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
-
-# Include Cyanogen product fragments
-include $(CM_PATH)/cyanogen/livedisplay.mk
 
 # Inherit proprietary files
 $(call inherit-product-if-exists, vendor/lge/ph2n/ph2n-vendor.mk)

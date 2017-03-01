@@ -1,7 +1,6 @@
 # Firmware images
 NON-HLOS.bin
 adspso.bin
-cmnlib64.mbn
 cmnlib.mbn
 devcfg.mbn
 emmc_appsboot.mbn
