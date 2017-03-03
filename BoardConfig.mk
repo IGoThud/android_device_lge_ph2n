@@ -15,7 +15,6 @@
 #
 
 DEVICE_PATH := device/lge/ph2n
-#CM_PATH := vendor/cm/config/board
 
 # Architecture
 TARGET_ARCH := arm
@@ -46,7 +45,7 @@ BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 #TARGET_KERNEL_APPEND_DTB := true
 #KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
 TARGET_KERNEL_SOURCE := kernel/lge/msm8937
-TARGET_KERNEL_CONFIG := ph2n_cm_defconfig
+TARGET_KERNEL_CONFIG := ph2n_mpcs_us-perf_defconfig
 #TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 
 # ANT

@@ -22,7 +22,7 @@ $(call inherit-product, device/lge/ph2n/device.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := ph2n
-PRODUCT_NAME := full_ph2n
+PRODUCT_NAME := lineage_ph2n
 PRODUCT_BRAND := lge
 PRODUCT_MODEL := ph2n
 PRODUCT_MANUFACTURER := lge
