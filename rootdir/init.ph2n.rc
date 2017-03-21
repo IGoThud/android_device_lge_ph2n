@@ -7,3 +7,6 @@ import init.lge.fs.rc
 import init.lge.power.rc
 
 import init.msm8937_32_core.rc
+
+on early-fs
+	 mount_all fstab.ph2n	
